@@ -10,8 +10,15 @@ const questionSchema = new mongoose.Schema({
     desc: {
         type: String,
     },
-    author: User,
-    replies: [Reply]
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    replies: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Reply'
+    }]
 })
 
 const Question = mongoose.model("Question", questionSchema);

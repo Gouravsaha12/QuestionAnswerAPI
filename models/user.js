@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-const Question = require("./question")
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -19,7 +18,11 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    questions : [Question],
+    questions : [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Question',
+            required: true
+    },],
 })
 
 const User = mongoose.model("User", userSchema);

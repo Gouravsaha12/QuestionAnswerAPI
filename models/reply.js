@@ -6,7 +6,11 @@ const replySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    author: User
+    author: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            required: true
+    },
 })
 
 const Reply = mongoose.model("Reply", replySchema);
